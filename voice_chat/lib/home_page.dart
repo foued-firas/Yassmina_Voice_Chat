@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:voice_chat/pallette.dart';
@@ -72,6 +73,20 @@ class _HomePageState extends State<HomePage> {
             ),
 
           ),
+          Container(
+            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.only(top: 10, left: 22),
+            alignment: Alignment.centerLeft,
+            child: Text("Here are few features", style: TextStyle(
+              fontFamily: 'Cera Pro',
+              color: Pallete.mainFontColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            
+            
+            ),),
+          )
+          //feature  List
 
         ],
       ),
