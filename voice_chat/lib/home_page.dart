@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:voice_chat/features_box.dart';
+import 'package:voice_chat/openai_services.dart';
 import 'package:voice_chat/pallette.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   final speechToText = SpeechToText();
   String lastWords = '';
   bool _speechEnabled = false;
-
+ final OpenAIService openAIService =OpenAIService();
   @override
   void initState() {
     super.initState();
@@ -166,8 +166,10 @@ class _HomePageState extends State<HomePage> {
             await startListening();
           } else if (speechToText.isListening) {
             await stopListening();
+           await  openAIService.isArtPromptAPI(lastWords);
+            
           } else {
-            print('Microphone permission not granted or speech not initialized.');
+          
             initSpeechToText();
           }
         },
