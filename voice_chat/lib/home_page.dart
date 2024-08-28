@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final speechToText = SpeechToText();
+  
   String lastWords = '';
   bool _speechEnabled = false;
  final OpenAIService openAIService =OpenAIService();
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     initSpeechToText();
+  
   }
 
   Future<void> initSpeechToText() async {
@@ -51,11 +53,13 @@ class _HomePageState extends State<HomePage> {
     });
     print('Recognized words: $lastWords');
   }
+ 
 
   @override
   void dispose() {
     super.dispose();
     speechToText.stop();
+   
   }
 
   @override
@@ -167,7 +171,7 @@ class _HomePageState extends State<HomePage> {
           } else if (speechToText.isListening) {
             
          final speech =  await  openAIService.isArtPromptAPI(lastWords);
-         print(speech);
+       
             await stopListening();
           } else {
           
