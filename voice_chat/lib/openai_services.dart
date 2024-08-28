@@ -45,6 +45,7 @@ class OpenAIService {
       return 'An internal error occurred';
     } catch (e) {
       return e.toString();
+      
     }
   }
 
